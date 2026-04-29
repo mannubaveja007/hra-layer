@@ -171,24 +171,55 @@ body {
     100% { transform: translateY(15px); opacity: 0; }
 }
 
-/* Glassmorphism Terminals */
-.terminal-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-    overflow: hidden;
-    position: relative;
+/* Glassmorphism Terminals with Border Glow */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }
 
-.terminal-card::before {
+@keyframes spin {
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
+}
+
+.terminal-card {
+    background: var(--glass-bg);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated Border Glow */
+.terminal-card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px; /* Glow border thickness */
+    background: conic-gradient(
+        from var(--angle), 
+        transparent 60%, 
+        rgba(6, 182, 212, 0.8), 
+        rgba(217, 70, 239, 0.8), 
+        transparent 100%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: spin 4s linear infinite;
+}
+
+/* Fallback for browsers that don't support @property (like Firefox) */
+@supports not (background: paint(something)) {
+    .terminal-card::after {
+        animation: none;
+        background: var(--glass-border);
+    }
 }
 
 .terminal-header {
@@ -197,6 +228,8 @@ body {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--glass-border);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .dots {
@@ -356,7 +389,6 @@ body {
 
 .resource-card {
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 1.5rem;
     text-align: left;
@@ -364,12 +396,57 @@ body {
     color: var(--text-main);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+/* Base static border using box-shadow so it doesn't conflict with padding/inset for the mask */
+.resource-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Animated glow layer */
+.resource-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--angle), 
+        transparent 60%, 
+        rgba(6, 182, 212, 1), 
+        rgba(217, 70, 239, 1), 
+        transparent 100%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: spin 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .resource-card:not(.disabled):hover {
     transform: translateY(-5px);
-    border-color: rgba(6, 182, 212, 0.4);
     box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+}
+
+.resource-card:not(.disabled):hover::before {
+    opacity: 0;
+}
+
+.resource-card:not(.disabled):hover::after {
+    opacity: 1;
 }
 
 /* Make secondary cards lower opacity */
