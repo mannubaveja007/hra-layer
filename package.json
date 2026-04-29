@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "Hallucination-Resistant Authorization Layer (HRA-L2) CLI Demo for x402-style agent payments",
   "main": "index.js",
+  "bin": {
+    "hra-cli": "./index.js"
+  },
   "scripts": {
     "simulate": "node index.js simulate",
     "attack": "node index.js simulate --attack"
   },
   "keywords": ["hra", "x402", "ai-agents", "hallucination-detection", "authorization"],
-  "author": "",
+  "author": "mannubaveja007",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mannubaveja007/hra-layer"
+  },
   "dependencies": {
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
