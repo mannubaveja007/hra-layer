@@ -370,12 +370,16 @@ body {
     transform: translateY(-5px);
     border-color: rgba(6, 182, 212, 0.4);
     box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
-    opacity: 1; /* Restore opacity on hover */
 }
 
 /* Make secondary cards lower opacity */
 .secondary-card {
-    opacity: 0.65;
+    opacity: 0.5;
+    transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+.secondary-card:not(.disabled):hover {
+    opacity: 0.8; /* Increases a little bit, not much */
 }
 
 .resource-card .icon {
