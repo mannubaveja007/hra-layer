@@ -130,6 +130,18 @@ gsap.from('.cta-section h2, .cta-section p, .code-copy', {
     ease: "power3.out"
 });
 
+gsap.from('.resource-card', {
+    scrollTrigger: {
+        trigger: '.resources-grid',
+        start: "top 85%",
+    },
+    y: 40,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power3.out"
+});
+
 // Copy to clipboard interaction
 const codeCopy = document.querySelector('.code-copy');
 if (codeCopy) {
