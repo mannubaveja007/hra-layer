@@ -309,6 +309,10 @@ body {
 .rejected-card { box-shadow: 0 0 40px rgba(239, 68, 68, 0.05); }
 
 /* CTA */
+.cta-section {
+    min-height: auto; /* Prevent clipping */
+}
+
 .cta-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -335,7 +339,7 @@ body {
 
 /* Footer / Creator Link */
 .footer {
-    padding: 2rem 0 4rem;
+    padding: 4rem 0;
 }
 
 /* Resources Grid */
@@ -343,9 +347,9 @@ body {
 
 .resources-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
