@@ -121,7 +121,7 @@ gsap.utils.toArray('.terminal-card').forEach(card => {
 gsap.from('.cta-section h2, .cta-section p, .code-copy', {
     scrollTrigger: {
         trigger: '.cta-section',
-        start: "top 80%",
+        start: "top 95%", // Trigger earlier
     },
     y: 30,
     opacity: 0,
@@ -133,7 +133,7 @@ gsap.from('.cta-section h2, .cta-section p, .code-copy', {
 gsap.from('.resource-card', {
     scrollTrigger: {
         trigger: '.resources-grid',
-        start: "top 85%",
+        start: "top 100%", // Trigger as soon as it enters the viewport
     },
     y: 40,
     opacity: 0,
