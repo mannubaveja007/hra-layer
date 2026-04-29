@@ -451,12 +451,12 @@ body {
 
 /* Make secondary cards lower opacity */
 .secondary-card {
-    opacity: 0.5;
-    transition: all 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7; /* Increased from 0.5 so it's clearly visible */
+    /* Removed transition: opacity to avoid fighting with GSAP */
 }
 
 .secondary-card:not(.disabled):hover {
-    opacity: 0.8; /* Increases a little bit, not much */
+    opacity: 0.95; /* Almost full opacity on hover */
 }
 
 /* Click Spark Animation */

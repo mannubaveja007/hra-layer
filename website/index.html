@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HRA-L2 | Hallucination-Resistant Authorization</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <!-- Lenis -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 </head>
+
 <body>
 
     <!-- Gradient Background -->
@@ -36,7 +40,8 @@
                     <span class="gradient-text">Authorization</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Preventing AI agents from making financial mistakes. A decision-making layer that blocks hallucinated or injected payment requests.
+                    Preventing AI agents from making financial mistakes. A decision-making layer that blocks
+                    hallucinated or injected payment requests.
                 </p>
                 <div class="scroll-indicator">
                     <div class="mouse">
@@ -51,9 +56,10 @@
             <div class="container">
                 <div class="section-header">
                     <h2>The <span class="text-red">Problem</span></h2>
-                    <p>AI agents can be tricked via prompt injection or simply hallucinate incorrect amounts and destinations.</p>
+                    <p>AI agents can be tricked via prompt injection or simply hallucinate incorrect amounts and
+                        destinations.</p>
                 </div>
-                
+
                 <div class="terminal-card attack-card">
                     <div class="terminal-header">
                         <div class="dots"><span></span><span></span><span></span></div>
@@ -80,7 +86,8 @@
             <div class="container">
                 <div class="section-header">
                     <h2>The <span class="text-green">Solution</span></h2>
-                    <p>HRA-L2 sits between the AI and the blockchain, enforcing strict policies before any x402 payment executes.</p>
+                    <p>HRA-L2 sits between the AI and the blockchain, enforcing strict policies before any x402 payment
+                        executes.</p>
                 </div>
 
                 <div class="grid-2">
@@ -93,16 +100,16 @@
                         <div class="terminal-body">
                             <div class="line"><span class="prompt">Agent B:</span> HTTP 402 Payment Required</div>
                             <div class="line"><span class="prompt">Amount:</span> 0.01 USDC</div>
-                            
+
                             <div class="divider"></div>
-                            
+
                             <div class="line text-yellow">[HRA-L2] Running Authorization...</div>
                             <ul class="check-list">
                                 <li class="pass">✔ Intent matches task</li>
                                 <li class="pass">✔ Policy: 0.01 ≤ 1 USDC</li>
                                 <li class="pass">✔ No hallucinations detected</li>
                             </ul>
-                            
+
                             <div class="decision-box approved">
                                 DECISION: APPROVED ✅
                             </div>
@@ -118,16 +125,16 @@
                         <div class="terminal-body">
                             <div class="line"><span class="prompt">Agent B:</span> HTTP 402 Payment Required</div>
                             <div class="line"><span class="prompt">Amount:</span> 100 USDC</div>
-                            
+
                             <div class="divider"></div>
-                            
+
                             <div class="line text-yellow">[HRA-L2] Running Authorization...</div>
                             <ul class="check-list">
                                 <li class="fail">✖ Intent mismatch</li>
                                 <li class="fail">✖ Policy: 100 > 1 USDC limit</li>
                                 <li class="fail">✖ Injection detected: "ignore"</li>
                             </ul>
-                            
+
                             <div class="decision-box rejected">
                                 DECISION: REJECTED ❌
                             </div>
@@ -145,28 +152,31 @@
                 <div class="code-copy">
                     <code>npx hra-cli simulate</code>
                 </div>
-                
+
                 <!-- Resources Links -->
                 <div class="resources-grid mt-4">
-                    <a href="https://www.npmjs.com/package/hra-cli" target="_blank" rel="noopener noreferrer" class="resource-card npm-card">
+                    <a href="https://www.npmjs.com/package/hra-cli" target="_blank" rel="noopener noreferrer"
+                        class="resource-card npm-card">
                         <div class="icon" style="color: #CB3837;">📦</div>
                         <h3>NPM Registry</h3>
                         <p>Install the CLI globally via NPM.</p>
                     </a>
 
-                    <a href="https://github.com/mannubaveja007/hra-layer" target="_blank" rel="noopener noreferrer" class="resource-card secondary-card">
+                    <a href="https://github.com/mannubaveja007/hra-layer" target="_blank" rel="noopener noreferrer"
+                        class="resource-card secondary-card">
                         <div class="icon" style="color: #f3f4f6;">💻</div>
                         <h3>GitHub Repository</h3>
                         <p>View the source code for the CLI.</p>
                     </a>
-                    
+
                     <div class="resource-card disabled secondary-card">
                         <div class="icon" style="color: #eab308;">📄</div>
                         <h3>Research Paper</h3>
                         <p class="status-label">To be published</p>
                     </div>
 
-                    <a href="https://www.coinbase.com/en-gb/blog/introducing-based-agent" target="_blank" rel="noopener noreferrer" class="resource-card secondary-card">
+                    <a href="https://www.coinbase.com/en-gb/blog/introducing-based-agent" target="_blank"
+                        rel="noopener noreferrer" class="resource-card secondary-card">
                         <div class="icon" style="color: #3b82f6;">📚</div>
                         <h3>x402 Protocol Docs</h3>
                         <p>Learn about M2M agent payments.</p>
@@ -188,4 +198,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
