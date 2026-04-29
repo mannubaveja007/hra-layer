@@ -459,6 +459,17 @@ body {
     opacity: 0.8; /* Increases a little bit, not much */
 }
 
+/* Click Spark Animation */
+.spark {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%); /* Center on cursor */
+}
+
 .resource-card .icon {
     font-size: 1.5rem;
     margin-bottom: 1rem;

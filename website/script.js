@@ -157,3 +157,45 @@ if (codeCopy) {
         }, 2000);
     });
 }
+
+// Click Spark Animation (from ReactBits concept)
+document.addEventListener('click', (e) => {
+    // Number of sparks per click
+    const numSparks = 10;
+    const colors = ['#06b6d4', '#d946ef', '#eab308', '#10b981'];
+    
+    for (let i = 0; i < numSparks; i++) {
+        const spark = document.createElement('div');
+        spark.classList.add('spark');
+        document.body.appendChild(spark);
+        
+        // Set initial position to the click coordinates
+        spark.style.left = `${e.clientX}px`;
+        spark.style.top = `${e.clientY}px`;
+        
+        // Apply random color
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        spark.style.backgroundColor = color;
+        spark.style.boxShadow = `0 0 10px ${color}`;
+        
+        // Calculate random explosion trajectory
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 40 + Math.random() * 60;
+        
+        const destX = Math.cos(angle) * distance;
+        const destY = Math.sin(angle) * distance;
+        
+        // Animate spark flying outwards and fading
+        gsap.to(spark, {
+            x: destX,
+            y: destY,
+            scale: 0,
+            opacity: 0,
+            duration: 0.6 + Math.random() * 0.4,
+            ease: "power3.out",
+            onComplete: () => {
+                spark.remove(); // Clean up DOM
+            }
+        });
+    }
+});
