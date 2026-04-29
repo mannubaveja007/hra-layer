@@ -130,9 +130,17 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc, #38bdf8);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .hero-subtitle {
